@@ -10,9 +10,13 @@ You talk to Claude in natural language. No commands to memorise.
 
 ## Quick start
 
-1. Copy the `CLAUDE.md` file into a folder in your project
-2. Create a `tasks/` subfolder (for optional task documents)
-3. Start telling Claude what you're working on
+1. Create a new folder 
+2. Copy the `CLAUDE.md` file into the folder
+3. Optional: Add your own instructions to the "Custom rules" section of the `CLAUDE.md` file
+4. Start telling Claude what you're working on, e.g.:
+```
+Developing a cool new feature
+```   
 
 ## Usage examples
 
