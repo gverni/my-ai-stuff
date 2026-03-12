@@ -172,6 +172,7 @@ When the user announces a task switch, Claude should **read the profile** and co
 4. **Carry-over debt**: Task carried over from 2+ previous days without progress → flag at start of day
 5. **Batching opportunity**: Frequent short switches to email/Slack → suggest batching at set times
 6. **Deadline awareness**: When suggesting what's next, prioritise tasks with approaching deadlines. Flag tasks whose deadline is today or tomorrow
+7. **40-20 break rule**: The user follows a 40-20 pattern — 40 minutes of work, then 20 minutes of break. When the user asks "what's next?" or "what should I work on?", check how long since their last break (break, lunch, or personal time all count). If it's been 40+ minutes, **suggest a break before the next task**. Be opinionated — don't just mention it, actively recommend it. In end-of-day summaries, note break compliance against the 40-20 target.
 
 ### Profile updates
 - Update metrics and patterns at the **end of each week** or when the user asks for a review
