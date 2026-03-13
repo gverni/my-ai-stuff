@@ -1,4 +1,4 @@
-# Daily Task Tracking - Context for Claude
+Daily Task Tracking - Context for Claude
 
 ## Purpose
 The user uses this system to track what they're working on throughout the day, including task switches and interruptions. This is a personal productivity tracker.
@@ -33,7 +33,7 @@ Every end-of-day summary must include a time breakdown by category, with total t
 |----------|----------|----------|
 | **Focus time** | Individual work, admin tasks (email, Slack), helping colleagues | Coding, writing docs, checking email, helping colleagues |
 | **Meetings** | All meetings and coffee chats | Meeting with Eavan, Coffee chat with Bigad, interviews |
-| **Breaks** | Breaks, lunch, personal time (non-work activities) | Break, lunch, doctor appointment, picking up kids |
+| **Breaks** | Breaks, lunch, personal time (non-work activities). All count equally as rest time for the 40-20 rule. | Break, lunch, doctor appointment, picking up kids |
 
 Format:
 ```
@@ -47,6 +47,30 @@ Format:
 ```
 
 When workstreams are present, also include a **time by workstream** section showing total focus time per workstream.
+
+### Weekly and monthly workstream summaries
+At the end of each week (Friday or when the user asks for a weekly summary) and at the end of each month, generate a **workstream time report**:
+
+```
+### Workstream summary (week of YYYY-MM-DD)
+| Workstream | Focus time | % of focus time |
+|------------|-----------|-----------------|
+| WS1: ... | Xh Xm | X% |
+| WS2: ... | Xh Xm | X% |
+| ...        | ...       | ...             |
+| **Total focus time** | Xh Xm | 100% |
+```
+
+- Calculate by reading all daily logs for the period
+- Count all **work time** (focus time + meetings) per workstream. If a meeting is tagged with a workstream, include it. Exclude breaks.
+- Include an "Other/Untagged" row for tasks without a workstream
+- For monthly summaries, also show week-over-week trends if data is available
+
+### Workstream starvation
+During the week, track which workstreams are receiving focus time. If a workstream has had **no focus time for 3+ working days**, flag it at start-of-day or when suggesting what's next:
+- "WS1: Methodology AI Assistant hasn't had any focus time this week — any tasks to pick up there?"
+- Only flag workstreams that have active (non-paused) status
+- Do not flag workstreams that only have monitoring/pending tasks with no actionable work
 
 ### Start-of-day reminder (when the user starts a new day):
 - Read the previous day's log
@@ -172,7 +196,8 @@ When the user announces a task switch, Claude should **read the profile** and co
 4. **Carry-over debt**: Task carried over from 2+ previous days without progress → flag at start of day
 5. **Batching opportunity**: Frequent short switches to email/Slack → suggest batching at set times
 6. **Deadline awareness**: When suggesting what's next, prioritise tasks with approaching deadlines. Flag tasks whose deadline is today or tomorrow
-7. **40-20 break rule**: The user follows a 40-20 pattern — 40 minutes of work, then 20 minutes of break. When the user asks "what's next?" or "what should I work on?", check how long since their last break (break, lunch, or personal time all count). If it's been 40+ minutes, **suggest a break before the next task**. Be opinionated — don't just mention it, actively recommend it. In end-of-day summaries, note break compliance against the 40-20 target.
+7. **Workstream starvation**: If a workstream has had no focus time for 3+ working days, flag it at start-of-day or when suggesting next tasks
+8. **40-20 break rule**: The user follows a 40-20 pattern — 40 minutes of work, then 20 minutes of break. When the user asks "what's next?" or "what should I work on?", check how long since their last break (break, lunch, or personal time all count). If it's been 40+ minutes, **suggest a break before the next task**. Be opinionated — don't just mention it, actively recommend it. In end-of-day summaries, note break compliance against the 40-20 target.
 
 ### Profile updates
 - Update metrics and patterns at the **end of each week** or when the user asks for a review
