@@ -1,4 +1,4 @@
-# Daily Task Tracker for Claude Code
+⏰🐙 Clocktopus -  Daily Task Tracker for Claude Code
 
 A lightweight, conversational task and time tracker that runs inside [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Just tell Claude what you're working on, and it handles the rest — logging tasks, tracking interruptions, and giving you end-of-day summaries.
 
@@ -10,13 +10,9 @@ You talk to Claude in natural language. No commands to memorise.
 
 ## Quick start
 
-1. Create a new folder 
-2. Copy the `CLAUDE.md` file into the folder
-3. Optional: Add your own instructions to the "Custom rules" section of the `CLAUDE.md` file
-4. Start telling Claude what you're working on, e.g.:
-```
-Developing a cool new feature
-```   
+1. Copy the `CLAUDE.md` file into a folder in your project (you don't need this README)
+2. Create a `tasks/` subfolder (for optional task documents)
+3. Start telling Claude what you're working on
 
 ## Usage examples
 
@@ -163,6 +159,10 @@ daily-tracking/
 ├── 2026-03-10.md
 └── 2026-03-11.md
 ```
+
+## Pro tips
+
+- **Terminal title**: Claude will attempt to set your terminal window title to `⏰🐙 Clocktopus` at the start of each session. This may not work depending on your terminal. If you're on zsh, you need to add `DISABLE_AUTO_TITLE="true"` to your `.zshrc` for it to take effect.
 
 ## Requirements
 
