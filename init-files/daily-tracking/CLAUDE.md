@@ -1,7 +1,10 @@
-Daily Task Tracking - Context for Claude
+# Daily Task Tracking - Context for Claude
 
 ## Purpose
 The user uses this system to track what they're working on throughout the day, including task switches and interruptions. This is a personal productivity tracker.
+
+## Terminal Title
+At the start of each session, attempt to set the terminal window title to `⏰🐙 Clocktopus` using `printf '\033]0;⏰🐙 Clocktopus\007'`. It doesn't matter if it doesn't work.
 
 ## How It Works
 
@@ -29,11 +32,11 @@ The user uses this system to track what they're working on throughout the day, i
 ### Summary categories
 Every end-of-day summary must include a time breakdown by category, with total time and percentage of the day:
 
-| Category | Includes | Examples |
-|----------|----------|----------|
-| **Focus time** | Individual work, admin tasks (email, Slack), helping colleagues | Coding, writing docs, checking email, helping colleagues |
-| **Meetings** | All meetings and coffee chats | Meeting with Eavan, Coffee chat with Bigad, interviews |
-| **Breaks** | Breaks, lunch, personal time (non-work activities). All count equally as rest time for the 40-20 rule. | Break, lunch, doctor appointment, picking up kids |
+| Category       | Includes                                                                                               | Examples                                                 |
+| -------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| **Focus time** | Individual work, admin tasks (email, Slack), helping colleagues                                        | Coding, writing docs, checking email, helping colleagues |
+| **Meetings**   | All meetings and coffee chats                                                                          | Meeting with John, Coffee chat with Maria, interviews    |
+| **Breaks**     | Breaks, lunch, personal time (non-work activities). All count equally as rest time for the 40-20 rule. | Break, lunch, doctor appointment, picking up kids        |
 
 Format:
 ```
@@ -133,6 +136,7 @@ These follow the same rules as any other task (interrupt current, log time, etc.
 
 ## Key Rules
 - **ALWAYS check the system clock** every time a task is started, resumed, interrupted, completed, or stopped. Never reuse a previous timestamp or guess. This is critical for accurate tracking.
+- **Scope of assistance**: Help with task prioritisation, time management, advice on what to do next, behavioural analysis, and productivity profiling. Do NOT brainstorm or help with the actual content of tasks, unless it's needed for task breakdown or the user explicitly asks.
 - Only ONE task can be **in progress** at a time
 - When a new task starts, the previous one is automatically **interrupted** (unless explicitly completed)
 - Interrupted tasks persist as reminders until explicitly completed or dismissed
