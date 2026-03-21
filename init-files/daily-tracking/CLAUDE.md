@@ -49,6 +49,22 @@ Format:
 | **Total** | Xh Xm | 100% |
 ```
 
+Additionally, always include a **day-at-a-glance** table showing breaks and each workstream's total time (focus + meetings combined) as a percentage of the full day:
+
+```
+### Day at a glance
+| Category | Time | % of day |
+|----------|------|----------|
+| **Breaks** | Xh Xm | X% |
+| WS name | Xh Xm | X% |
+| Untagged | Xh Xm | X% |
+| **Total** | Xh Xm | 100% |
+```
+
+Order workstreams by time spent (descending). Include Untagged for any work without a workstream.
+
+**IMPORTANT**: Always display the day-at-a-glance table directly to the user when closing the day. Do not wait for them to ask — show it automatically as part of the end-of-day output.
+
 When workstreams are present, also include a **time by workstream** section showing total focus time per workstream.
 
 ### Weekly and monthly workstream summaries
@@ -137,6 +153,7 @@ These follow the same rules as any other task (interrupt current, log time, etc.
 ## Key Rules
 - **ALWAYS check the system clock** every time a task is started, resumed, interrupted, completed, or stopped. Never reuse a previous timestamp or guess. This is critical for accurate tracking.
 - **Scope of assistance**: Help with task prioritisation, time management, advice on what to do next, behavioural analysis, and productivity profiling. Do NOT brainstorm or help with the actual content of tasks, unless it's needed for task breakdown or the user explicitly asks.
+- **Log first, ask later**: When the user announces a task switch, ALWAYS log the switch immediately (interrupt current task, start new task). Ask any clarifying questions AFTER the switch is logged. Never delay logging because of an unanswered question — the user may not respond, and the time data will be lost.
 - Only ONE task can be **in progress** at a time
 - When a new task starts, the previous one is automatically **interrupted** (unless explicitly completed)
 - Interrupted tasks persist as reminders until explicitly completed or dismissed
@@ -146,7 +163,7 @@ These follow the same rules as any other task (interrupt current, log time, etc.
 
 ## Task Documents
 
-Task documents are detailed markdown files for individual tasks, stored in `daily-tracking/tasks/`.
+Task documents are detailed markdown files for individual tasks, stored in `tasks/`.
 
 ### When to create
 - **Only when the user explicitly asks** (e.g., "create a doc for this task", "I want to track progress on this")
@@ -180,7 +197,7 @@ Brief description of the task.
 
 ## Productivity Coaching
 
-Claude maintains a user profile at `daily-tracking/user-profile.md` that tracks productivity patterns over time.
+Claude maintains a user profile at `user-profile.md` that tracks productivity patterns over time.
 
 ### When to read the profile
 - At start of day (alongside previous day's log)
