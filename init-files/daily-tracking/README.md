@@ -1,4 +1,4 @@
-⏰🐙 Clocktopus -  Daily Task Tracker for Claude Code
+# ⏰🐙 Clocktopus -  Daily Task Tracker for Claude Code
 
 A lightweight, conversational task and time tracker that runs inside [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Just tell Claude what you're working on, and it handles the rest — logging tasks, tracking interruptions, and giving you end-of-day summaries.
 
