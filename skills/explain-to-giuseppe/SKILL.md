@@ -45,6 +45,9 @@ If an answer looks long, cut it. Keep the one idea that matters.
 4. **Plain words first, the technical term in parentheses.** Write the plain version, then put
    the protocol term right after it. Example: "send (redirect, HTTP 302) the human to our own
    login page (the Authentication URL)". Never drop the technical term, and never lead with it.
+   For a list of fields or parts, give one short line each: the plain meaning first, as the
+   answer to a question ("who vouches", "when it expires"), then the technical name in
+   parentheses. See the second example.
 5. **Say where each piece of information comes from.** For every URL, value or fact: who has
    it, and how did the other party learn it (configured in advance, found by discovery, told in
    a response)? Giuseppe's questions are usually of this kind: "how does X know Y?"
@@ -91,3 +94,17 @@ Landed:
    human (the Support Agent).
 5. That address belongs to Acme Identity, the authorization server. Its first step is to send (redirect, HTTP 302)
    the human to our own login page (the Authentication URL).
+
+## Example: a list of fields
+
+Giuseppe said this form was "super clear". Each line answers a question in plain words, and the
+technical name comes second, in parentheses.
+
+A signed note about a user contains:
+
+- who vouches: us (`iss`, the Issuer)
+- who it's for: the authorization server (`aud`, the Audience)
+- who the user is (`sub`)
+- when it was made and when it expires (`iat`, `exp`)
+- the one-time code (`nonce`)
+- what the user may grant (`scopes`)
